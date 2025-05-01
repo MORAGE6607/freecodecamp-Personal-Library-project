@@ -6,6 +6,21 @@ const expect      = require('chai').expect;
 const cors        = require('cors');
 require('dotenv').config();
 
+
+require('dotenv').config();
+const mongoose = require('mongoose');
+
+// replace the example URI below with process.env.DB
+mongoose.connect(process.env.DB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => {
+  console.error('MongoDB connection error:', err);
+  process.exit(1);
+});
+
 const apiRoutes         = require('./routes/api.js');
 const fccTestingRoutes  = require('./routes/fcctesting.js');
 const runner            = require('./test-runner');
